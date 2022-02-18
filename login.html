@@ -1,0 +1,74 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>LOGIN</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+</head>
+<style>
+  h1{
+    text-align: center;
+  }
+  form{
+    padding-left: 42%;
+    padding-top: 1%;
+
+  }
+  input{
+    font-weight: light;
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 2px;
+    width: 200px;
+  }
+  #dob{
+    width: 200px;
+  }
+  #submit{
+    width: 214px;
+    font-size: large;
+    background-color: red;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+
+  }
+  #submit:hover{
+
+    background-color: black;
+    color: black;
+    cursor: pointer;
+    border-color:black;
+  }
+  #login_details{
+    text-align: center;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold
+  }
+  span{
+     font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+  }
+</style>
+<body>
+  <h1>Log In</h1>
+   <hr size="3">
+   <form action="login" method="POST">
+
+
+        <input type="email" name="email" id="email" placeholder="Email Address" required></input><br><br>
+        <input type="password" name="password" id="password" placeholder="Enter Password" required></input><br><br>
+
+        <input type="submit" name="submit" id="submit" value="LOGIN"></input><br><br>
+        <span> Are You New Here ?<br>Get yourself registered click <a href="/">Here</a></span>
+
+   </form><br><br>
+   
+ 
+
+</body>
+</html>
