@@ -4,6 +4,16 @@
         <meta charset="UTF-8">
         <title>Profile Managment</title>
         <link rel="stylesheet" href="account.css">
+
+        <script>
+            function validateProfile() {
+                const name = document.getElementById("full_name");
+                const address = document.getElementById("address_1");
+                const city = document.getElementById("city");
+                const state = document.getElementById("state")
+                const zip = document.getElementById("zip");
+            }
+        </script>
     </head>
     <body>
         <div id="no_blur">
@@ -33,7 +43,7 @@
                 <input type = "text" name = "city" id = "city" maxlength="100" placeholder = "City" required>
                 <br><br>
                 <label>State</label>
-                <select name = "State" required>
+                <select name = "State" id = "state" required>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
                     <option value="AZ">Arizona</option>
