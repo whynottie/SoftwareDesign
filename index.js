@@ -10,9 +10,13 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/',function (req, res){
     
-    res.sendFile(path.join(__dirname,'./Frontend/fuel_quote.html'));
+    res.sendFile(path.join(__dirname,'./Frontend/login.html'));
 });
 
+app.get("/mainmenu.html", (req, res) => {
+
+    res.sendFile(path.join(__dirname,'./Frontend/mainmenu.html'))
+})
 var quoteData
 var userfullAddress
 
@@ -31,17 +35,7 @@ app.post("/FuelQuote", function (req, res){
     res.sendFile(path.join(__dirname,'./frontend/fuel_quote.html'));
 
 });
-app.get('/getQuote', async(req,res) => {
-    const quote_data = quoteData
-    res.send(quote_data)
-    
-});
-app.get('/getAddress', async(req, res) => {
-    const address_data = {
-        address: userfullAddress
-    }
-    res.send(address_data)
-});
+
 app.post("/saved", (req, res) => {
     const profile_data = {
         name : req.body.full_name,
@@ -55,6 +49,21 @@ app.post("/saved", (req, res) => {
     res.sendFile(path.join(__dirname, 'profile_saved.html'))    
     //res.send(req.body)
 });
+
+
+app.get('/getQuote', async(req,res) => {
+    const quote_data = quoteData
+    res.send(quote_data)
+    
+});
+app.get('/getAddress', async(req, res) => {
+    const address_data = {
+        address: userfullAddress
+    }
+    res.send(address_data)
+});
+
+
 var port = process.env.PORT || 3000;
 app.listen(port, function () {
     console.log("Server Has Started at port 3000!");
