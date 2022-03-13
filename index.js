@@ -41,6 +41,16 @@ app.get('/getAddress', async(req, res) => {
     }
     res.send(address_data)
 });
+app.post("/saved", (req, res) => {
+    var name = req.body.full_name,
+        address = req.body.address_1,
+        address_2 = req.body.address_2,
+        city = req.body.city,
+        state = req.body.state,
+        zip = req.body.zip
+    res.sendFile(path.join(__dirname, 'profile_saved.html'))    
+    //res.send(req.body)
+});
 var port = process.env.PORT || 3000;
 app.listen(port, function () {
     console.log("Server Has Started at port 3000!");

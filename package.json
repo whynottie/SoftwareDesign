@@ -5,8 +5,8 @@
     "keywords": [],
     "main": "app.js",
     "scripts": {
-        "start": "node app",
-        "dev": "nodemon app"
+        "start": "node index",
+        "dev": "nodemon index"
     },
     "author": "",
     "dependencies": {
