@@ -3,127 +3,42 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>LOGIN</title>
+  <title>loginForm</title>
+  <script src="login.js"></script>
+  <link rel="stylesheet" href="login.css">
+  
   <meta name="description" content="The HTML5 Herald">
-  <meta name="author" content="SitePoint">
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
 </head>
-<style>
-  h1{
-    text-align: center;
-  }
-  input{
-    font-weight: light;
-    padding: 5px;
-    margin-right: 5px;
-    border-radius: 2px;
-    width: 200px;
-  }
-  #dob{
-    width: 200px;
-  }
-  #submit{
-    width: 214px;
-    font-size: large;
-    background-color: red;
-    color: white;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
 
-
-  }
-  #submit:hover{
-
-    background-color: black;
-    color: black;
-    cursor: pointer;
-    border-color:black;
-  }
-  #login_details{
-    text-align: center;
-
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bold
-  }
-  span{
-     font-family: Verdana, Geneva, Tahoma, sans-serif;
-
-  }
-  #nav_bar {
-    z-index: 1;
-    text-align: center;
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 6vw;
-    padding-left: 5vw;
-    padding-right: 5vw;
-    background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom:2vw;
-    box-shadow: 0vw 0px 1vw 1vw whitesmoke;
-}
-
-#no_blur {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom:1vw;
-    overflow: hidden;
-}
-
-#nav_bar .nav_bar_button {
-    height: 4vw;
-    width: 21vw;
-    font-size: 1.8vw;
-    display: inline-block;
-    border-radius: 20px 5px;
-    color: #fff;
-    border: 0;
-    cursor: pointer;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-}
-
-#nav_bar .nav_bar_button:hover {
-    height: 5vw;
-    width: 22vw;
-    text-decoration: underline;
-    box-shadow: 0.1vw 0.2vw 0.3vw #333;
-}
-  form.main{
-    padding-left: 42%;
-    padding-top: 1%;
-    align-items: center;
-    size: 100px;
-  }
-</style>
 
 <div id="no_blur">
   <div id="nav_bar">
       <form action="fuel_quote.html"><button class="nav_bar_button ">Fuel Quote</button></form>
-      <form action="registration.html"><button class="nav_bar_button ">Register</button></form>
+      <form action="register.html"><button class="nav_bar_button ">Register</button></form>
       <form action="account.html"><button class="nav_bar_button ">My Account</button></form>
       <form action="history.html"><button class="nav_bar_button">History</button></form>
   </div>
 </div>
 <body></body>
 <body>
-  <h1>Log In</h1>
-   <hr size="3">
-   <form  class="main" action="login" method="POST">
-
-
-        <input type="User Name" name=" User Name" id="User Name" placeholder="User Name" required></input><br><br>
-        <input type="password" name="password" id="password" placeholder="Enter Password" required></input><br><br>
-
-        <input type="submit" name="submit" id="submit" value="LOGIN"></input><br><br>
-        <span> Are You New Here ?<br>Get yourself registered click <a href="/">Here</a></span>
-
-   </form><br><br>
-   
- 
-
-</body>
-</html>
+  <div id="formBox">
+                <h1 id="formHeader">Login</h1>
+                <form id="loginForm" action="MyAccount.html">
+                    <p>
+                        <label id="formLabelUsername" class="formLabel" for="formFieldUsername">Username:</label>
+                        <input type="text" id="formFieldUsername" class="formField" name="username" placeholder="" >
+                    </p>
+                    <p>
+                        <label id="formLabelPass" class="formLabel" for="formFieldPass">Password:</label>
+                        <input type="password" id="formFieldPass" class="formField" name="password" placeholder="" >
+                    </p>
+					
+					<div id="formErrors" ></div>
+					
+					<div id="signUpSuccess" ></div>
+					
+					<p>
+                        <input type="submit" value="Login" id="loginButton" class="formLogin" name="loginButton">
+                        <label id="registerText" class="formLogin">Don't have an account? <a href="register.html">register</a></label>
+                    </p>
+  
