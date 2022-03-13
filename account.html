@@ -4,18 +4,10 @@
         <meta charset="UTF-8">
         <title>Profile Managment</title>
         <link rel="stylesheet" href="account.css">
-
-        <script>
-            function validateProfile() {
-                const name = document.getElementById("full_name");
-                const address = document.getElementById("address_1");
-                const city = document.getElementById("city");
-                const state = document.getElementById("state")
-                const zip = document.getElementById("zip");
-            }
-        </script>
     </head>
-    <body>
+    
+
+    
         <div id="no_blur">
             <div id="nav_bar">
                 <form action="login.html"><button class="nav_bar_button ">Login</button></form>
@@ -28,8 +20,8 @@
         <h1 style = "text-align: center;">Account Information</h1>
         <hr>
         <div class="prof_form">
-
-            <form>
+    <body>
+            <form action = "/saved" method = "POST">
                 <label>Full Name</label>
                 <input type = "text" name = "full_name" id = "full_name" placeholder="John Smith" maxlength = "50" required>
                 <br> <br>
@@ -102,6 +94,7 @@
                 <div>
                     <button type = "submit" class ="save_button"> Save</button>
                 </div>
+
             </form>
         </div>
     </body>

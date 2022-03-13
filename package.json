@@ -1,0 +1,18 @@
+{
+    "name": "4353",
+    "version": "1.0.0",
+    "description": "",
+    "keywords": [],
+    "main": "app.js",
+    "scripts": {
+        "start": "node app",
+        "dev": "nodemon app"
+    },
+    "author": "",
+    "dependencies": {
+        "express": "^4.17.3"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    }
+}
