@@ -2,6 +2,7 @@ var express = require("express");
 bodyParser = require("body-parser");
 const path = require("path");
 const http = require('http');
+const { profile } = require("console");
 var app = express();
 const server = http.createServer(app);
 app.use(express.static(path.join(__dirname,'./frontend')));
@@ -42,12 +43,15 @@ app.get('/getAddress', async(req, res) => {
     res.send(address_data)
 });
 app.post("/saved", (req, res) => {
-    var name = req.body.full_name,
-        address = req.body.address_1,
-        address_2 = req.body.address_2,
-        city = req.body.city,
-        state = req.body.state,
-        zip = req.body.zip
+    const profile_data = {
+        name : req.body.full_name,
+        address : req.body.address_1,
+        address_2 : req.body.address_2,
+        city : req.body.city,
+        state : req.body.state,
+        zip : req.body.zip
+    }
+    console.log(profile_data)
     res.sendFile(path.join(__dirname, 'profile_saved.html'))    
     //res.send(req.body)
 });
