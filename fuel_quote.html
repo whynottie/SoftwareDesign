@@ -86,19 +86,66 @@
     <div text-align="center" align-items="center">
   <h1 >Fuel Quote Calculator</h1>
    <hr size="3">
-   <form class= "main"  align-items="center" text-align="center" action="/fuel_quote.html" method="POST">
+   <form  name = "FuelQuote" id = "FuelQuote " action="/FuelQuote" method="POST"  class= "main"  align-items="center" text-align="center">
 
 
-        <input type="number" name="gallons" id="gallons" placeholder="Gallons Requested" required></input><br><br>
-        <input type="text" name="text" id="text" placeholder="Enter Address" readonly></input><br><br>
-        <input type="date" name="email" id="date" placeholder="Enter date" required></input><br><br>
-        <input type="number" name="suggested_price" id="suggested_price" placeholder="Suggested Price/Gallon" style="background-color: #D3D3D3;" readonly></input><br><br>
-        <input type="submit" name="submit" id="submit" value="Submit"></input><br><br>
-        <input type="number" name="price" id="price" placeholder="Total Due" style="background-color: #D3D3D3;" readonly></input><br><br>
+        <input type="number" step="any" id="gallons" name="gallons" placeholder="Gallons Requested" required></input><br><br>
+        <input type="text"  name="address" id="address" placeholder="Enter Address" readonly></input><br><br>
+        <input type="date"   name="date" id="date" placeholder="Enter date" required></input><br><br>
+        <input type="number"  name="suggested_price" id="suggested_price" placeholder="Suggested Price/Gallon" style="background-color: #D3D3D3;" readonly></input><br><br>
+        <button type="button " onclick="myFunction()" id = "submit" name="submit" > Submit</button><br><br>
+        <input type="number" action="/getfinal" name="price" id="price" placeholder="Total Due" style="background-color: #D3D3D3;" readonly></input><br><br>
+        <script>
 
+          window.onload=my_code();
+    
+          async function my_code(){
+            
+            const response = await fetch("http://localhost:3000/getAddress", {
+                method: "GET",
+                headers: {'Content-Type': 'application/json'}
+            });
+            addrData = await response.json();
+            
+            dAddress = document.getElementById('address');
+    
+            if(addrData['address'] != null) {
+              dAddress.value = addrData['address']
+            }
+          }
+    
+          
+        </script>
+         <script src="index.js"></script>
    </form><br><br>
 </div>
- 
+<script>
+
+  window.onload=my_code();
+
+  async function my_code(){
+    
+    const response = await fetch("http://localhost:3000/getAddress", {
+        method: "GET",
+        headers: {'Content-Type': 'application/json'}
+    });
+    addrData = await response.json();
+    
+    dAddress = document.getElementById('address');
+
+    if(addrData['address'] != null) {
+      dAddress.value = addrData['address']
+    }
+  }
+
+  
+</script>
+
+
+
+<script   src="https://code.jquery.com/jquery-3.5.1.js"   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="   crossorigin="anonymous"></script>
+<script src="code.js"></script>
+</form>
 
 </body>
 </html
