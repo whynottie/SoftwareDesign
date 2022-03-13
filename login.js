@@ -38,7 +38,7 @@ window.onload = function () {
 		}
 		else{
 			sessionStorage.setItem("FQSESSION_username",enteredUsername);
-			window.location = "account.html";
+			window.location = "mainmenu.html";
 		}
 	});
 };
