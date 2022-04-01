@@ -99,6 +99,17 @@
 
             </form>
         </div>
+        <script>
+            const userAction = async () => {
+                fetch('http://localhost:3000/getProfile')
+                    .then(response => response.json())
+                    .then(json => console.log(json))
+            }
+            userAction();
+            document.getElementById("full_name").innerHTML = response.name;
+
+        </script>
+
     </body>
 
 </html>
