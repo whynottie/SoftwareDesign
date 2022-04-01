@@ -13,6 +13,7 @@ mongoose.connect('mongodb://localhost/fuelquote')
 var db = mongoose.connection
 
 const Profile = require('./profile.js')
+const User = require('./user.js')
 
 
 const server = http.createServer(app);
@@ -20,11 +21,31 @@ app.use(express.static(path.join(__dirname,'./frontend')));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
+//Sign up and log in routes
 app.get('/',function (req, res){
     
     res.sendFile(path.join(__dirname,'./Frontend/login.html'));
 });
+
+app.get('/signup', (req, res) => {
+    res.sendFile(path.join(__dirname,'./Frontend/signup.html'))
+});
+
+app.post('/registered', async (req, res) => {
+    let user = new User( {
+        username: req.body.username,
+        password : req.body.password
+    })
+    try {
+        user = await user.save()
+        res.redirect('/')
+
+    } catch(e) {
+        console.log(e)
+    }
+
+})
+
 
 app.get("/mainmenu.html", (req, res) => {
 
@@ -34,7 +55,6 @@ var quoteData
 var userfullAddress
 
 app.post("/FuelQuote", function (req, res){
-    
     quoteData = {    
         gallonsRequested: req.body.gallons,
         deliveryAddress: req.body.address,
@@ -46,8 +66,11 @@ app.post("/FuelQuote", function (req, res){
 
 
     res.sendFile(path.join(__dirname,'./frontend/fuel_quote.html'));
-
 });
+
+
+
+
 
 
 //Profile Routes

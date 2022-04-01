@@ -1,5 +1,4 @@
-const mongoose = require(mongoose)
-
+const mongoose = require('mongoose')
 const userSchema = new mongoose.Schema({
     username: {
         type : String,
@@ -9,7 +8,26 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    profile : [profileSchema]
+    profile : {
+        name: {
+            type : String,
+        },
+        address1: {
+            type : String,
+        },
+        address2: {
+            type : String
+        },
+        city : {
+            type: String,
+        },
+        state : {
+            type: String,
+        },
+        zip: {
+            type: String,
+        }
+    }
 })
 
 module.exports = mongoose.model('User', userSchema)
