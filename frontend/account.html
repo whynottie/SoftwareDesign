@@ -103,11 +103,16 @@
             const userAction = async () => {
                 fetch('http://localhost:3000/getProfile')
                     .then(response => response.json())
-                    .then(json => console.log(json))
+                    .then(json => {
+                        document.getElementById("full_name").value= json['name'];
+                        document.getElementById("address_1").value= json['address1'];
+                        document.getElementById("address_2").value= json['address2'];
+                        document.getElementById("city").value= json['city'];
+                        document.getElementById("state").value= json['state'];
+                        document.getElementById("zip").value= json['zip'];
+                    })
             }
             userAction();
-            document.getElementById("full_name").innerHTML = response.name;
-
         </script>
 
     </body>

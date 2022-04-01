@@ -12,7 +12,8 @@ const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/fuelquote')
 var db = mongoose.connection
 //User Schema for DB
-const User = require('./user.js')
+const User = require('./user.js');
+const { response } = require("express");
 
 
 const server = http.createServer(app);
@@ -97,13 +98,35 @@ app.get("/account",  (req, res) => {
 
 });
 
-app.get("/getProfile", (req, res) => {
-    res.send()
+app.get("/getProfile", async (req, res) => {
+    var profile_data = {
+        name: "",
+        address1: "",
+        address2: "",
+        city:"",
+        state:"",
+        zip:""
+    }
+    await User.findById(id)
+        .then((result) => {
+            try{
+                profile_data = {
+                    name: result.name,
+                    address1 : result.address1,
+                    address2 : result.address2,
+                    city : result.city,
+                    state : result.state,
+                    zip : result.zip
+                }
+            } catch(e) {
+                console.log(e)
+            }
+        })
+    res.send(profile_data)
 });
 
 app.post("/saved", async (req, res) => {
-
-    console.log(id)
+    //console.log(id)
     const user = await User.findOneAndUpdate({_id : id},
          {$set: {name : req.body.full_name, 
             address1 : req.body.address_1,
