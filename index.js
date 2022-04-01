@@ -11,8 +11,7 @@ var app = express();
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/fuelquote')
 var db = mongoose.connection
-
-const Profile = require('./profile.js')
+//User Schema for DB
 const User = require('./user.js')
 
 
@@ -88,14 +87,8 @@ app.post("/FuelQuote", function (req, res){
         totalAmt: req.body.total
        
     }
-
-
     res.sendFile(path.join(__dirname,'./frontend/fuel_quote.html'));
 });
-
-
-
-
 
 
 //Profile Routes
@@ -108,28 +101,17 @@ app.get("/getProfile", (req, res) => {
     res.send()
 });
 
-app.post("/saved", (req, res) => {
+app.post("/saved", async (req, res) => {
 
     console.log(id)
-    User.findOneAndUpdate({_id: id}, {$set: {name: req.body.full_name}}, {upsert:true})
+    const user = await User.findOneAndUpdate({_id : id},
+         {$set: {name : req.body.full_name, 
+            address1 : req.body.address_1,
+            address2: req.body.address_2,
+            city : req.body.city,
+            state : req.body.state,
+            zip : req.body.zip}})
     res.redirect('/account')
-
-    /* let profile = new Profile({
-        name : req.body.full_name,
-        address : req.body.address_1,
-        address_2 : req.body.address_2,
-        city : req.body.city,
-        state : req.body.state,
-        zip : req.body.zip
-    })
-    try {
-        profile = await profile.save()
-        res.redirect('/account')
-    } catch(e) {
-        console.log(e)
-    } */
-    //res.sendFile(path.join(__dirname, 'profile_saved.html'))    
-    //res.send(req.body)
 });
 
 
