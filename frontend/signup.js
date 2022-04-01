@@ -87,6 +87,19 @@ window.onload = function () {
 			
 			sessionStorage.setItem("FQSIGNUP_registerSuccess",true);
 			window.location.replace("login.html");
+
+			//const mongoose = require('mongoose')
+			//mongoose.connect('mongodb://localhost/fuelquote')
+			//const User = require('.././user.js')
+			//let user = new User( {
+			//	username : username.value,
+			//	password : pass.value
+			//})
+			//try {
+			//	profile = await profile.save()
+			//} catch(e) {
+			//	console.log(e)
+			//}
 		}
 	});
 };

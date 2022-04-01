@@ -7,6 +7,7 @@ const { profile } = require("console");
 var app = express();
 
 
+
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/fuelquote')
 var db = mongoose.connection
@@ -57,6 +58,7 @@ app.get("/account",  (req, res) => {
 app.get("/getProfile", (req, res) => {
     res.send()
 });
+
 app.post("/saved", async (req, res) => {
     let profile = new Profile({
         name : req.body.full_name,
@@ -72,7 +74,6 @@ app.post("/saved", async (req, res) => {
     } catch(e) {
         console.log(e)
     }
-   
     //res.sendFile(path.join(__dirname, 'profile_saved.html'))    
     //res.send(req.body)
 });
