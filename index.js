@@ -99,14 +99,7 @@ app.get("/account",  (req, res) => {
 });
 
 app.get("/getProfile", async (req, res) => {
-    var profile_data = {
-        name: "",
-        address1: "",
-        address2: "",
-        city:"",
-        state:"",
-        zip:""
-    }
+    var profile_data
     await User.findById(id)
         .then((result) => {
             try{
