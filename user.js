@@ -8,25 +8,23 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    profile : {
-        name: {
-            type : String,
-        },
-        address1: {
-            type : String,
-        },
-        address2: {
-            type : String
-        },
-        city : {
-            type: String,
-        },
-        state : {
-            type: String,
-        },
-        zip: {
-            type: String,
-        }
+    name: {
+       type : String
+    },
+    address1: {
+        type : String
+    },
+    address2: {
+        type : String
+    },
+    city : {
+        type: String
+    },
+    state : {
+        type: String
+    },
+    zip: {
+        type: String
     }
 })
 

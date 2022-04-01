@@ -21,6 +21,10 @@ app.use(express.static(path.join(__dirname,'./frontend')));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+//Unique id to identify each user
+var id;
+
 //Sign up and log in routes
 app.get('/',function (req, res){
     
@@ -29,6 +33,27 @@ app.get('/',function (req, res){
 
 app.get('/signup', (req, res) => {
     res.sendFile(path.join(__dirname,'./Frontend/signup.html'))
+});
+
+app.post('/login', (req, res) => {
+    var login_info = {
+        username : req.body.username,
+        password : req.body.password
+    }
+    User.find(login_info)
+        .then((result) => {
+            try{
+            id = String(result[0]._id).split('"')
+            id = String(id[0])
+            res.redirect('/mainmenu')
+            } catch(e) {
+                console.log(e)
+                console.log("User not found")
+            }
+        })
+        .catch((err) => {
+            console.log(err)
+        })
 });
 
 app.post('/registered', async (req, res) => {
@@ -44,10 +69,10 @@ app.post('/registered', async (req, res) => {
         console.log(e)
     }
 
-})
+});
 
 
-app.get("/mainmenu.html", (req, res) => {
+app.get("/mainmenu", (req, res) => {
 
     res.sendFile(path.join(__dirname,'./Frontend/mainmenu.html'))
 })
@@ -78,12 +103,18 @@ app.get("/account",  (req, res) => {
     res.sendFile(path.join(__dirname,'./frontend/account.html'))
 
 });
+
 app.get("/getProfile", (req, res) => {
     res.send()
 });
 
-app.post("/saved", async (req, res) => {
-    let profile = new Profile({
+app.post("/saved", (req, res) => {
+
+    console.log(id)
+    User.findOneAndUpdate({_id: id}, {$set: {name: req.body.full_name}}, {upsert:true})
+    res.redirect('/account')
+
+    /* let profile = new Profile({
         name : req.body.full_name,
         address : req.body.address_1,
         address_2 : req.body.address_2,
@@ -96,7 +127,7 @@ app.post("/saved", async (req, res) => {
         res.redirect('/account')
     } catch(e) {
         console.log(e)
-    }
+    } */
     //res.sendFile(path.join(__dirname, 'profile_saved.html'))    
     //res.send(req.body)
 });
