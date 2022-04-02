@@ -94,13 +94,15 @@ var profileInfo
 var userfullAddress
 app.post("/saved", async (req, res) => {
     userfullAddress = req.body.address_1
-     profileInfo= {name : req.body.full_name, 
+    const user = await User.findOneAndUpdate({_id:id},{
+        $set:
+     {name : req.body.full_name,
             address1 : req.body.address_1,
             address2: req.body.address_2,
             city : req.body.city,
             state : req.body.state,
             zip : req.body.zip,
-            userfullAddress:req.body.address_1}
+            userfullAddress:req.body.address_1}})
     res.redirect('/FQF')
 });
 app.get("/FQF",function(req,res){
@@ -133,7 +135,20 @@ app.get('/getAddress', async(req, res) => {
 
 
 app.get("/getProfile", async (req, res) => {
-    const profile_data = profileInfo;
+    var profile_data 
+    await User.findById(id).then((result)=>{
+        try{
+            profile_data={
+                name:result.name,
+                address1:result.address1,
+                address2:result.address2,
+                city:result.city,
+                state:result.state,
+                zip:result.zip
+            }}catch(e){
+            console.log(e)
+        }
+    })
     res.send(profile_data)
     
 });
