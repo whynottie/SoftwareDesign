@@ -1,6 +1,7 @@
 <!doctype html>
 
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Fuel Quote</title>
@@ -9,10 +10,11 @@
   <link rel="stylesheet" href="css/styles.css?v=1.0">
 </head>
 <style>
- h1{
+  h1 {
     text-align: center;
   }
-  #fuel_quote{
+
+  #fuel_quote {
     text-align: center;
 
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -33,19 +35,19 @@
     margin-left: 0;
     margin-right: 0;
     margin-top: 0;
-    margin-bottom:2vw;
+    margin-bottom: 2vw;
     box-shadow: 0vw 0px 1vw 1vw whitesmoke;
-}
+  }
 
-#no_blur {
+  #no_blur {
     margin-left: 0;
     margin-right: 0;
     margin-top: 0;
-    margin-bottom:1vw;
+    margin-bottom: 1vw;
     overflow: hidden;
-}
+  }
 
-#nav_bar .nav_bar_button {
+  #nav_bar .nav_bar_button {
     height: 4vw;
     width: 21vw;
     font-size: 1.8vw;
@@ -55,18 +57,20 @@
     border: 0;
     cursor: pointer;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-}
+  }
 
-#nav_bar .nav_bar_button:hover {
+  #nav_bar .nav_bar_button:hover {
     height: 5vw;
     width: 22vw;
     text-decoration: underline;
     box-shadow: 0.1vw 0.2vw 0.3vw #333;
-}
-#dob{
+  }
+
+  #dob {
     width: 200px;
   }
-  form.main{
+
+  form.main {
     padding-left: 42%;
     padding-top: 1%;
     align-items: center;
@@ -74,78 +78,54 @@
   }
 </style>
 
-    <div id="no_blur">
-        <div id="nav_bar">
-            <!-- <form action="login.html"><button class="nav_bar_button ">Login</button></form>
+<div id="no_blur">
+  <div id="nav_bar">
+    <!-- <form action="login.html"><button class="nav_bar_button ">Login</button></form>
             <form action="signup.html"><button class="nav_bar_button ">Register</button></form> -->
-            <form action="account.html"><button class="nav_bar_button ">My Account</button></form>
-            <form action="history.html"><button class="nav_bar_button">History</button></form>
-        </div>
-    </div>
-    <body></body>
-    <div text-align="center" align-items="center">
-  <h1 >Fuel Quote Calculator</h1>
-   <hr size="3">
-   <form  name = "FuelQuote" id = "FuelQuote " action="/FuelQuote" method="POST"  class= "main"  align-items="center" text-align="center">
-
-
-        <input type="number" step="any" id="gallons" name="gallons" placeholder="Gallons Requested" required></input><br><br>
-        <input type="text"  name="address" id="address" placeholder="Enter Address" readonly></input><br><br>
-        <input type="date"   name="date" id="date" placeholder="Enter date" required></input><br><br>
-        <input type="number"  name="suggested_price" id="suggested_price" placeholder="Suggested Price/Gallon" style="background-color: #D3D3D3;" readonly></input><br><br>
-        <button type="button " onclick="myFunction()" id = "submit" name="submit" > Submit</button><br><br>
-        <input type="number" action="/getfinal" name="price" id="price" placeholder="Total Due" style="background-color: #D3D3D3;" readonly></input><br><br>
-        <script>
-
-          window.onload=my_code();
-    
-          async function my_code(){
-            
-            const response = await fetch("http://localhost:3000/getAddress", {
-                method: "GET",
-                headers: {'Content-Type': 'application/json'}
-            });
-            addrData = await response.json();
-            
-            dAddress = document.getElementById('address');
-    
-            if(addrData['address'] != null) {
-              dAddress.value = addrData['address']
-            }
-          }
-    
-          
-        </script>
-         <script src="index.js"></script>
-   </form><br><br>
+    <form action="account.html"><button class="nav_bar_button ">My Account</button></form>
+    <form action="history.html"><button class="nav_bar_button">History</button></form>
+  </div>
 </div>
-<script>
 
-  window.onload=my_code();
+<body></body>
+<div text-align="center" align-items="center">
+  <h1>Fuel Quote Calculator</h1>
+  <hr size="3">
+  <form name="FuelQuote" id="FuelQuote " action="/FuelQuote" method="POST" class="main" align-items="center"
+    text-align="center">
 
-  async function my_code(){
-    
-    const response = await fetch("http://localhost:3000/getAddress", {
-        method: "GET",
-        headers: {'Content-Type': 'application/json'}
-    });
-    addrData = await response.json();
-    
-    dAddress = document.getElementById('address');
 
-    if(addrData['address'] != null) {
-      dAddress.value = addrData['address']
-    }
-  }
+    <input type="number" step="any" id="gallons" name="gallons" placeholder="Gallons Requested"
+      required></input><br><br>
+    <input type="text" name="address_1" id="address_1" placeholder="Enter Address" readonly></input><br><br>
+    <input type="date" name="date" id="date" placeholder="Enter date" required></input><br><br>
+    <input type="number" name="suggested_price" id="suggested_price" placeholder="Suggested Price/Gallon"
+      style="background-color: #D3D3D3;" readonly></input><br><br>
+    <button type="button " onclick="myFunction()" id="submit" name="submit"> Submit</button><br><br>
+    <input type="number" action="/getfinal" name="total" id="total" placeholder="Total Due"
+      style="background-color: #D3D3D3;" readonly></input><br><br>
+    <script>
+
+      window.onload = my_code();
+
+      async function my_code() {
+
+        const response = await fetch("http://localhost:3000/getAddress", {
+          method: "GET",
+          headers: { 'Content-Type': 'application/json' }
+        });
+        addrData = await response.json();
+
+        dAddress = document.getElementById('address_1');
+        if (addrData['address'] != null) {
+          dAddress.value = addrData['address']
+        }
+      }
+
+
+    </script>
+    <script src="index.js"></script>
+  </form><br><br>
+</div>
 
   
-</script>
-
-
-
-<script   src="https://code.jquery.com/jquery-3.5.1.js"   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="   crossorigin="anonymous"></script>
-<script src="code.js"></script>
-</form>
-
-</body>
-</html
