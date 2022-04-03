@@ -5,7 +5,7 @@ const http = require('http');
 const { profile } = require("console");
 var app = express();
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/fuelquote')
+mongoose.connect('mongodb+srv://admin:Password1!@fuelquoteapp.m75vd.mongodb.net/FuelQuoteApp?retryWrites=true&w=majority')
 var db = mongoose.connection
 //User Schema for DB
 const User = require('./models/user.js');
