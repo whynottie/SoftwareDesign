@@ -1,0 +1,138 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Fuel Quote</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+</head>
+<style>
+  h1 {
+    text-align: center;
+  }
+
+  #fuel_quote {
+    text-align: center;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold
+  }
+
+  #nav_bar {
+    z-index: 1;
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 6vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 2vw;
+    box-shadow: 0vw 0px 1vw 1vw whitesmoke;
+  }
+
+  #no_blur {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 1vw;
+    overflow: hidden;
+  }
+
+  #nav_bar .nav_bar_button {
+    height: 4vw;
+    width: 21vw;
+    font-size: 1.8vw;
+    display: inline-block;
+    border-radius: 20px 5px;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
+
+  #nav_bar .nav_bar_button:hover {
+    height: 5vw;
+    width: 22vw;
+    text-decoration: underline;
+    box-shadow: 0.1vw 0.2vw 0.3vw #333;
+  }
+
+  #dob {
+    width: 200px;
+  }
+
+  form.main {
+    padding-left: 42%;
+    padding-top: 1%;
+    align-items: center;
+    size: 100px;
+  }
+</style>
+
+<div id="no_blur">
+  <div id="nav_bar">
+    <!-- <form action="login.html"><button class="nav_bar_button ">Login</button></form>
+            <form action="signup.html"><button class="nav_bar_button ">Register</button></form> -->
+    <form action="account.html"><button class="nav_bar_button ">My Account</button></form>
+    <form action="history.html"><button class="nav_bar_button">History</button></form>
+  </div>
+</div>
+
+<body></body>
+<div text-align="center" align-items="center">
+  <h1>Fuel Quote Calculator</h1>
+  <hr size="3">
+  <form name="FuelQuote" id="FuelQuote " action="/FuelQuote" method="POST" class="main" align-items="center"
+    text-align="center">
+
+
+    <input type="number" step="any" id="gallons" name="gallons" placeholder="Gallons Requested"
+      required></input><br><br>
+    <input type="text" name="address_1" id="address_1" placeholder="Enter Address" readonly></input><br><br>
+    <input type="date" name="date" id="date" placeholder="Enter date" required></input><br><br>
+    <input type="number" name="suggested_price" id="suggested_price" placeholder="Suggested Price/Gallon"
+      style="background-color: #D3D3D3;" readonly></input><br><br>
+    <input class="login2" type="number" name="total" id="total" placeholder="Total due" readonly></input><br><br>
+    <div class = "forbtn">
+      <button type="submit" class="submit3" onclick="myFunction()"id="submitButton" disabled="disabled">Submit</button></a>
+      <button type="button" class="submit2" onclick="pricing();enableButton()"  id="getQB" >Get Quote</button></a>
+  </div>
+    <script>
+      function enableButton() {
+        document.getElementById("submitButton").disabled = false
+      }
+    </script>
+    <script>
+
+      window.onload = my_code();
+
+      async function my_code() {
+
+        const response = await fetch("http://localhost:3000/getAddress", {
+          method: "GET",
+          headers: { 'Content-Type': 'application/json' }
+        });
+        addrData = await response.json();
+
+        dAddress = document.getElementById('address_1');
+        if (addrData['address'] != null) {
+          dAddress.value = addrData['address']
+        }
+      }
+
+
+    </script>
+    <script src="index.js"></script>
+    <script src="script.js"></script>
+
+  </form><br><br>
+</div>

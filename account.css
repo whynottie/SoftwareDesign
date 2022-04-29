@@ -1,0 +1,70 @@
+
+.prof_form {
+    padding: 50px;
+}
+input[type = text] {
+    width: 100%;
+    padding: 10px;
+    margin: 20px 20px 20px 20px;
+}
+
+label {
+    margin: 0 0 0 20px;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 20px 20px 20px 20px;
+}
+.save_button {
+    color:white;
+    background-color: #ff0000;
+    width:15%;
+    padding:15px;
+    margin: 20px
+}
+#nav_bar {
+    z-index: 1;
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 6vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom:2vw;
+    box-shadow: 0vw 0px 1vw 1vw whitesmoke;
+}
+
+#no_blur {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom:1vw;
+    overflow: hidden;
+}
+
+#nav_bar .nav_bar_button {
+    height: 4vw;
+    width: 21vw;
+    font-size: 1.8vw;
+    display: inline-block;
+    border-radius: 20px 5px;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#nav_bar .nav_bar_button:hover {
+    height: 5vw;
+    width: 22vw;
+    text-decoration: underline;
+    box-shadow: 0.1vw 0.2vw 0.3vw #333;
+}

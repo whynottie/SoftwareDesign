@@ -1,0 +1,44 @@
+<DOCTYPE HTML>
+    <html>
+        <header>
+            <!-- <script src="signup.js"></script> -->
+            <link rel="stylesheet" href="signup.css">
+        </header>
+	  <div id="no_blur">
+  	       <div id="nav_bar">
+             <form action="/"><button class="nav_bar_button ">Login</button></form>
+             <!-- <form action="fuel_quote.html"><button class="nav_bar_button ">Fuel Quote</button></form>
+             <form action="account.html"><button class="nav_bar_button ">My Account</button></form>
+             <form action="history.html"><button class="nav_bar_button">History</button></form> -->
+             </div>
+        </div>
+    
+        <body>
+            <div id="formBox">
+                <h1 id="formHeader">Sign Up</h1>
+                <form id="signUpForm" action = '/registered' method = "POST">
+                    <p>
+                        <label for="username" class="formLabel">Username:</label>
+                        <input type="text" id="username" class="formField" name="username" placeholder="">
+                    </p>
+                    <p>
+                        <label for="password" class="formLabel">Password:</label>
+                        <input type="password" id="password" class="formField" name="password" placeholder="">
+                    </p>
+                    <p>
+                        <label for="repeatpass" class="formLabel">Repeat Password:</label>
+                        <input type="password" id="repeatpass" class="formField" name="repeatpass" placeholder="">
+                    </p>
+					
+					<div id="formErrors" style="display:none"></div>
+					
+                    <p>
+                        <input type="submit" value="Create account" id="signUpButton" name="signUpButton">
+                    </p>
+                    <p id="loginText">
+                        Already a user? <a href="login.html">Log in</a>
+                    </p>
+                </form>
+            </div>
+        </body>
+    </html>
